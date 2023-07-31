@@ -1,0 +1,63 @@
+<div class="container_reg">
+  <div class="container_box">
+    <div class="logo_box">
+      <a href="/">
+        <img src="/img/icon.png" alt="Logo">
+        <span class="text_title">Sign up to Octagram</span>
+      </a>
+    </div>
+
+    <div class="register_form">
+      <form action="/user/register" method="POST">
+        <div class="form_box">
+          <input class="input_text" type="text" name="name" placeholder='Name' value="<%= (locals.old_data) ? old_data.name : '' %>"/>
+          <span class="symbol_input100">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </span>
+        </div>
+
+        <div class="form_box">
+          <input class="input_text" type="text" name="email" placeholder='Email' />
+          <span class="symbol_input100">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+          </span>
+        </div>
+
+        <div class="form_box">
+          <input class="input_text" type="password" name="pass" placeholder='Password' />
+          <span class="symbol_input100">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+          </span>
+        </div>
+
+        <% if (locals.register_error) { %>
+          <div class="alert alert-danger" role="alert">
+            <%= register_error %>
+          </div>
+          <% } %>
+
+        <div class="container_reg_btn">
+          <button class="reg_btn">
+            Register
+          </button>
+        </div>
+
+        <div class="creadit">
+          <span class="txt1">
+            Power by
+          </span>
+          <span class="txt2">
+            ZOLOAC-DEV
+          </span>
+        </div>
+
+      </form>
+    </div>
+    <div class="login_page">
+      <a href="/login" class="txt3">
+        Already have an account?
+        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
