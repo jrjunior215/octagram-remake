@@ -1,0 +1,52 @@
+<nav>
+  <div class="logo">
+    <a href="/home">
+      <img src="/img/icon.png" alt="Logo">
+    </a>
+  </div>
+  <ul>
+    <li>
+      <a href="/">
+        <i class="fas fa-pager"></i>
+        <span class="nav-item">Feed</span>
+      </a>
+    </li>
+    <li>
+      <a href="/">
+        <i class="fas fa-compass"></i>
+        <span class="nav-item">Find Creator</span>
+      </a>
+    </li>
+    <li>
+      <a href="/">
+        <i class="fas fa-envelope"></i>
+        <span class="nav-item">Message</span>
+      </a>
+    </li>
+    <li>
+      <a href="/">
+        <i class="fas fa-gear"></i>
+        <span class="nav-item">Setting</span>
+      </a>
+    </li>
+  </ul>
+  <div class="underline"></div>
+
+  <div class="profile">
+
+    <div class="profile_link">
+      <img src="/img/profile.png" alt="Profile">
+      <div class="profile_name">
+        <% if (loggedIn) { %>
+        <h1><%= loggedIn.name %></h1>
+        <h2><%= loggedIn.role %></h2>
+        <% } %>
+      </div>
+    </div>
+
+    <div class="ellipsis">
+      <i class="fas fa-ellipsis-vertical"></i>
+    </div>
+
+  </div>
+</nav>

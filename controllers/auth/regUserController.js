@@ -4,10 +4,7 @@ module.exports = async (req, res) => {
     const data = req.body;
 
     const reigster = await User.register(data).then((result) => {
-        if (result == true) {
-            console.log("Register Successfully")
-        }
-        // res.redirect('/login');
+        res.redirect('/login')
     }).catch((error) => {
         res.locals.layout = 'auth/layout';
         res.render('auth/register', {

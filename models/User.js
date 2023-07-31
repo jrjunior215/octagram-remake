@@ -8,18 +8,17 @@ User.register = (data) => {
     const { name, email, pass } = data;
 
     return new Promise(function (resolve, reject) {
-        dbConnection.execute("SELECT email from `users` where email = ?", [email]).then((rows) => {
+        dbConnection.execute("SELECT email FROM `users` WHERE email = ?", [email]).then(async ([rows]) => {
             if (rows.length > 0) {
-                console.log("False")
-                // reject("This email already in use!")
+                reject("This email already in use!")
             } else {
-                console.log("True")
+                const hash = await bcrypt.hash(pass, 10).then((hash_pass) => {
+                    dbConnection.execute("INSERT INTO `users`(`name`,`email`,`password`, `role`) VALUES(?,?,?,?)", [name, email, hash_pass, "USER"])
+                }).catch(err => {
+                    if (err) throw err;
+                });
+                resolve(true)
             }
-            // const hash = await bcrypt.hash(pass, 10).then((hash_pass) => {
-            //     dbConnection.execute("INSERT INTO `users`(`name`,`email`,`password`, `role`) VALUES(?,?,?,?)", [name, email, hash_pass, "USER"])
-            // }).catch(err => {
-            //     if (err) throw err;
-            // });
         }).catch(err => {
             if (err) throw err;
         });
@@ -34,7 +33,7 @@ User.login = async (data) => {
     return new Promise(function (resolve, reject) {
         dbConnection.execute("SELECT email FROM `users` WHERE email = ?", [email]).then(async ([rows]) => {
             if (rows.length == 1) {
-                dbConnection.execute("SELECT * FROM `users` WHERE `email`=?", [email]).then(async ([rows]) => {
+                dbConnection.execute("SELECT * FROM `users` WHERE `email` = ?", [email]).then(async ([rows]) => {
                     const hash = await bcrypt.compare(pass, rows[0].password).then(function (result) {
                         if (result === true) {
                             resolve(rows);

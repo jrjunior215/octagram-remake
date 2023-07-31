@@ -7,10 +7,13 @@ global.loggedIn = null
 
 //------------ Controller ------------
 
-// Views Controller
-const indexController = require('./controllers/views/indexController');
-const loginController = require('./controllers/views/loginController');
-const regController = require('./controllers/views/regController');
+// Views Controller Index Page
+const indexController = require('./controllers/views/index/indexController');
+const loginController = require('./controllers/views/index/loginController');
+const regController = require('./controllers/views/index/regController');
+
+// Views Controller Home Page
+const homeController = require('./controllers/views/home/homeController');
 
 // Auth Controller
 const regUserController = require('./controllers/auth/regUserController');
@@ -71,6 +74,7 @@ app.get('/login', loginController);
 app.get('/register', regController);
 
 // HOME PAGE
+app.get('/home', homeController);
 
 //------------ POST ------------
 

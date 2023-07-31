@@ -5,7 +5,7 @@ module.exports = async (req, res) => {
     const Login = await User.login(data).then((result) => {
         if (result[0].role === "USER") {
             req.session.userId = result[0]
-            res.redirect('/');
+            res.redirect('/home');
         } else if (result[0].role === "ADMIN") {
             req.session.userId = result[0]
             res.redirect('/');
