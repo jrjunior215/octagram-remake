@@ -18,6 +18,10 @@
   src: url('../../fonts/montserrat/Montserrat-Bold.ttf');
 }
 
+.container {
+  background-color: #F6F7FA;
+}
+
 .container_home {
   height: 100%;
   width: 100%;

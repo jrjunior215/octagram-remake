@@ -38,14 +38,25 @@
       <img src="/img/profile.png" alt="Profile">
       <div class="profile_name">
         <% if (loggedIn) { %>
-        <h1><%= loggedIn.name %></h1>
-        <h2><%= loggedIn.role %></h2>
-        <% } %>
+          <h1>
+            <%= loggedIn.name %>
+          </h1>
+          <h2>
+            <%= loggedIn.role %>
+          </h2>
+          <% } %>
       </div>
     </div>
 
-    <div class="ellipsis">
-      <i class="fas fa-ellipsis-vertical"></i>
+    <div onclick="" class="ellipsis">
+      <a onclick="ShowEllipsis()" class="drop_menu"><i class="fas fa-ellipsis-vertical drop_menu"></i></a>
+      <div class="popup">
+        <ul class="ellipsis_popups" id="ellipsis_popups">
+          <li><a href="#">Creator resources</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="/logout" class="btn_logout">Log out</a></li>
+        </ul>
+      </div>
     </div>
 
   </div>

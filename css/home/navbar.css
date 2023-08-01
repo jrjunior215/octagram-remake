@@ -34,7 +34,7 @@ nav {
   height: 100%;
   left: 0;
   background: #fff;
-  width: 280px;
+  width: 15%;
   overflow: hidden;
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
 }
@@ -138,15 +138,45 @@ ul li a:hover {
 
 .ellipsis {
   position: absolute;
-  right: 0;
+  right: 10px;
   cursor: pointer;
-  width: 20%;
   display: flex;
   justify-content: center;
-  margin-right: 10px;
 }
 
-.ellipsis:hover {
+.ellipsis a:hover {
   background-color: #eee;
   border-radius: 30px;
+}
+
+.popup {
+  position: relative;
+}
+
+.ellipsis_popups {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;  
+  border-radius: 10px;
+  width: 230px;
+  position: absolute;
+  right: 20px;
+  bottom: 65px;
+  background-color: #fff;
+  display: none;
+}
+
+.drop_menu {
+  border: none;
+}
+
+.ellipsis_popups.open_menu {
+  display: block;
+}
+
+.ellipsis_popups li a {
+  margin: 10px;
+  font-size: 12px;
+}
+
+.btn_logout {
+  color: #f57070;
 }

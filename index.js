@@ -18,10 +18,15 @@ const homeController = require('./controllers/views/home/homeController');
 // Auth Controller
 const regUserController = require('./controllers/auth/regUserController');
 const loginUserController = require('./controllers/auth/loginUserController');
+const logoutUserController = require('./controllers/auth/logoutUserController');
 
 //------------ Controller ------------
 
 //------------ Middleware ------------
+
+// Auth Middleware
+const redirectAuth = require('./middleware/redirectAuth')
+const checkAuth = require('./middleware/checkAuth')
 
 //------------ Middleware ------------
 
@@ -67,14 +72,15 @@ app.set('view engine','ejs');
 //------------ GET ------------
 
 // INDEX PAGE
-app.get('/', indexController);
+app.get('/', redirectAuth, indexController);
 
 // AUTH PAGE
-app.get('/login', loginController);
-app.get('/register', regController);
+app.get('/login', redirectAuth, loginController);
+app.get('/register', redirectAuth, regController);
+app.get('/logout',  logoutUserController);
 
 // HOME PAGE
-app.get('/home', homeController);
+app.get('/home', checkAuth, homeController);
 
 //------------ POST ------------
 
