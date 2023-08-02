@@ -1,4 +1,45 @@
 <div class="container_home">
     <div class="container_page">
+        <div class="container_search">
+            <div class="header_search">
+                <h1>Find creators</h1>
+            </div>
+            <div class="search_bar">
+                <div class="search_box">
+                    <input class="search_text" id="autosearch" type="text" name="search" placeholder='Serach...' />
+                    <span class="symbol_search">
+                        <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
+                    </span>
+                    <button>Search</button>
+                </div>
+            </div>
+
+            <div class="search_content" id="search_content">
+
+            </div>
+            <div class="creator_header">
+                <h1>CREATOR LIST</h1>
+            </div>
+
+            <div class="creator_list">
+                <ul class="profile_search">
+                    <% for(var i=0; i < creators.length; i++) { %>
+                        <li class="search_result">
+                            <form action="/user" method="POST">
+                                <button>
+                                    <img src="/img/profile.png" alt="">
+                                    <div class="creator_info">
+                                        <span class="creator_name">
+                                            <%= creators[i].pname %>
+                                        </span>
+                                        <span class="creator_desc">Creating website octagram</span>
+                                    </div>
+                                </button>
+                            </form>
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>

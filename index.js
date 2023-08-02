@@ -2,6 +2,7 @@ const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const expressSession = require('express-session');
+const dbConnection = require('./js/database');
 
 global.loggedIn = null
 
@@ -14,6 +15,8 @@ const regController = require('./controllers/views/index/regController');
 
 // Views Controller Home Page
 const homeController = require('./controllers/views/home/homeController');
+const searchController = require('./controllers/views/home/searchController');
+const searchAutoCreatorController = require('./controllers/search/searchAutoCreatorController');
 
 // Auth Controller
 const regUserController = require('./controllers/auth/regUserController');
@@ -25,8 +28,8 @@ const logoutUserController = require('./controllers/auth/logoutUserController');
 //------------ Middleware ------------
 
 // Auth Middleware
-const redirectAuth = require('./middleware/redirectAuth')
-const checkAuth = require('./middleware/checkAuth')
+const redirectAuth = require('./middleware/redirectAuth');
+const checkAuth = require('./middleware/checkAuth');
 
 //------------ Middleware ------------
 
@@ -81,6 +84,8 @@ app.get('/logout',  logoutUserController);
 
 // HOME PAGE
 app.get('/home', checkAuth, homeController);
+app.get('/search', searchController);
+app.get('/search/query', searchAutoCreatorController);
 
 //------------ POST ------------
 
