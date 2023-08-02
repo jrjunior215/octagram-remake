@@ -15,8 +15,8 @@
             </div>
 
             <div class="search_content" id="search_content">
-
             </div>
+
             <div class="creator_header">
                 <h1>CREATOR LIST</h1>
             </div>
@@ -25,17 +25,17 @@
                 <ul class="profile_search">
                     <% for(var i=0; i < creators.length; i++) { %>
                         <li class="search_result">
-                            <form action="/user" method="POST">
-                                <button>
-                                    <img src="/img/profile.png" alt="">
-                                    <div class="creator_info">
-                                        <span class="creator_name">
-                                            <%= creators[i].pname %>
-                                        </span>
-                                        <span class="creator_desc">Creating website octagram</span>
-                                    </div>
-                                </button>
-                            </form>
+                            <a href="/<%= creators[i].pname %>">
+                                <img src="/img/profile.png" alt="">
+                                <div class="creator_info">
+                                    <span class="creator_name">
+                                        <%= creators[i].pname %>
+                                    </span>
+                                    <span class="creator_desc">Creating website octagram</span>
+                                    <input id="creatorUser" name="creatorUser" type="hidden"
+                                        value="<%= creators[i].id %>" />
+                                </div>
+                            </a>
                         </li>
                     <% } %>
                 </ul>

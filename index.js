@@ -16,7 +16,10 @@ const regController = require('./controllers/views/index/regController');
 // Views Controller Home Page
 const homeController = require('./controllers/views/home/homeController');
 const searchController = require('./controllers/views/home/searchController');
+
+// Search Controller
 const searchAutoCreatorController = require('./controllers/search/searchAutoCreatorController');
+const userPageController = require('./controllers/search/userPageController')
 
 // Auth Controller
 const regUserController = require('./controllers/auth/regUserController');
@@ -85,6 +88,9 @@ app.get('/logout',  logoutUserController);
 // HOME PAGE
 app.get('/home', checkAuth, homeController);
 app.get('/search', searchController);
+
+// HOME SEARCH
+app.get('/:pname', userPageController);
 app.get('/search/query', searchAutoCreatorController);
 
 //------------ POST ------------

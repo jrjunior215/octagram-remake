@@ -25,4 +25,16 @@ Creator.find = async (data) => {
     })
 };
 
+Creator.page = async (data) => {
+    const query = data;
+    const queryString = `SELECT * FROM creators WHERE pname LIKE '%${query}%'`
+    return new Promise(function (resolve, reject) {
+        dbConnection.execute(queryString).then(async ([rows]) => {
+            resolve(rows);
+        }).catch(err => {
+            if (err) throw err;
+        });
+    })
+};
+
 module.exports = Creator;

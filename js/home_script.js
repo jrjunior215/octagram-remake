@@ -34,15 +34,13 @@ async function load_data(query = '') {
                 if (data.length > 0) {
                     for (var count = 0; count < data.length; count++) {
                         html += '<li class="search_result">';
-                        html += '<form action="/user" method="POST">';
-                        html += '<button>';
+                        html += '<a href="/' + data[count].pname  + '">';
                         html += '<img src="/img/profile.png" alt="">';
                         html += '<div class="creator_info">';
                         html += '<span class="creator_name">' + data[count].pname + '</span>';
                         html += '<span class="creator_desc">Creating website octagram</span>';
                         html += '</div>';
-                        html += '</button>';
-                        html += '</form>';
+                        html += '</a>';
                         html += '</li>';
                     }
                 }
