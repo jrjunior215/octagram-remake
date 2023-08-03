@@ -2,7 +2,6 @@ const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const expressSession = require('express-session');
-const dbConnection = require('./js/database');
 
 global.loggedIn = null
 
@@ -16,10 +15,11 @@ const regController = require('./controllers/views/index/regController');
 // Views Controller Home Page
 const homeController = require('./controllers/views/home/homeController');
 const searchController = require('./controllers/views/home/searchController');
+const membershipController = require('./controllers/views/home/membershipController')
 
 // Search Controller
 const searchAutoCreatorController = require('./controllers/search/searchAutoCreatorController');
-const userPageController = require('./controllers/search/userPageController')
+const creatorPageController = require('./controllers/search/creatorPageController')
 
 // Auth Controller
 const regUserController = require('./controllers/auth/regUserController');
@@ -90,7 +90,8 @@ app.get('/home', checkAuth, homeController);
 app.get('/search', searchController);
 
 // HOME SEARCH
-app.get('/:pname', userPageController);
+app.get('/:pname', creatorPageController);
+app.get('/:pname/membership', membershipController);
 app.get('/search/query', searchAutoCreatorController);
 
 //------------ POST ------------
