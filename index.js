@@ -3,8 +3,6 @@ const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const expressSession = require('express-session');
 
-global.loggedIn = null
-
 //------------ Controller ------------
 
 // Views Controller Index Page
@@ -26,6 +24,10 @@ const regUserController = require('./controllers/auth/regUserController');
 const loginUserController = require('./controllers/auth/loginUserController');
 const logoutUserController = require('./controllers/auth/logoutUserController');
 
+// Member Controller
+const memberAddController = require('./controllers/creator/memberAddController');
+const memberListController = require('./controllers/creator/memberListController');
+
 //------------ Controller ------------
 
 //------------ Middleware ------------
@@ -35,6 +37,9 @@ const redirectAuth = require('./middleware/redirectAuth');
 const checkAuth = require('./middleware/checkAuth');
 
 //------------ Middleware ------------
+
+
+global.loggedIn = null
 
 const app = express();
 
@@ -99,6 +104,11 @@ app.get('/search/query', searchAutoCreatorController);
 // LOGIN & REGISTER
 app.post('/user/register', regUserController);
 app.post('/user/login', loginUserController);
+
+// CREATOR MEMBERSHIP
+app.post('/membership/prefer', memberAddController)
+
+app.get('/s/navbar', memberListController)
 
 // SET POST LISTEN
 app.listen(4000, () => console.log("Server is Running on Port 4000."));

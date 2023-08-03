@@ -4,33 +4,47 @@
       <img src="/img/icon.png" alt="Logo">
     </a>
   </div>
-  <ul>
-    <li>
-      <a href="/home">
-        <i class="fas fa-pager"></i>
-        <span class="nav-item">Feed</span>
-      </a>
-    </li>
-    <li>
-      <a href="/search">
-        <i class="fas fa-compass"></i>
-        <span class="nav-item">Find Creator</span>
-      </a>
-    </li>
-    <li>
-      <a href="/">
-        <i class="fas fa-envelope"></i>
-        <span class="nav-item">Message</span>
-      </a>
-    </li>
-    <li>
-      <a href="/">
-        <i class="fas fa-gear"></i>
-        <span class="nav-item">Setting</span>
-      </a>
-    </li>
-  </ul>
-  <div class="underline"></div>
+  <div class="container_navbar">
+    <ul>
+      <li>
+        <a href="/home">
+          <i class="fas fa-pager"></i>
+          <span class="nav-item">Feed</span>
+        </a>
+      </li>
+      <li>
+        <a href="/search">
+          <i class="fas fa-compass"></i>
+          <span class="nav-item">Find Creator</span>
+        </a>
+      </li>
+      <li>
+        <a href="/">
+          <i class="fas fa-envelope"></i>
+          <span class="nav-item">Message</span>
+        </a>
+      </li>
+      <li>
+        <a href="/">
+          <i class="fas fa-gear"></i>
+          <span class="nav-item">Setting</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="underline"></div>
+
+    <div class="limit_octagram_list">
+      <div class="title_nav">
+        <span>Membership</span>
+      </div>
+    </div>
+
+    <div class="limit_octagram_list">
+      <div class="octagram_list" id="octagram_list">
+      </div>
+    </div>
+  </div>
 
   <div class="profile">
 
@@ -61,3 +75,33 @@
 
   </div>
 </nav>
+
+<script>
+  window.onload = async function () {
+    fetch('http://localhost:4000/s/navbar')
+        .then(response => response.json())
+        .then(memberlist => {
+            var html = '<div class="octagram_item">';
+
+            if (memberlist.length > 0) {
+                for (var count = 0; count < memberlist.length; count++) {
+                    html += '<a href="/' + memberlist[count].pname + '">';
+                    html += '<div class="creator_nav">';
+                    html += '<img src="/img/profile.png" alt="profile_creator">';
+                    html += '<span>' + memberlist[count].pname + '</span>';
+                    html += ' </div>';
+                    html += '</a>';
+                }
+            }
+            else {
+
+            }
+
+            html += '</div>';
+
+            const octagram_list = $("#octagram_list");
+            octagram_list.empty();
+            octagram_list.append(html);
+        })
+}
+</script>

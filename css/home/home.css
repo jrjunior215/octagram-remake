@@ -34,10 +34,9 @@
   position: absolute;
   right: 0;
   width: 85%;
-  height: auto;
+  height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
   background-color: #F6F7FA;
 }
 
@@ -343,16 +342,17 @@
 .membership {
   position: absolute;
   right: 50px;
-  top: 45px;
+  top: 35px;
 }
 
 .btn_sub {
-  font-size: 15px;
-  padding: 15px;
+  font-size: 12px;
+  padding: 13px;
   background-color: #f01f1f;
   color: #fff;
   border-radius: 40px;
   cursor: pointer;
+  border: 1px #6d6d6d;
 }
 
 .btn_sub:hover {
@@ -395,9 +395,89 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #F6F7FA;
 }
 
 .creator_post {
-  height: 600px;
-  width: 70%;
+  height: auto;
+  width: 40%;
+}
+
+.post_box {
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.profile_post {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.profile_post {
+  display: flex;
+  width: 100%;
+  height: auto;
+  padding-bottom: 13px;
+  border-bottom: 1px solid #cecece;
+}
+
+.profile_img_post {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+}
+
+.creator_post_name {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.creator_post_name .creator_name {
+  font-size: 15px;
+}
+
+.creator_post_name .post_time {
+  color: #9c9c9c;
+  font-size: 13px;
+}
+
+.post_content_limit {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 30px;
+}
+
+.post_content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  width: 90%;
+  height: 100%;
+}
+
+.post_title {
+  word-wrap: break-word;
+  font-size: 25px;
+  width: 100%;
+}
+
+.post_desc {
+  word-wrap: break-word;
+  font-size: 15px;
+  width: 100%;
+  height: auto;
+  color: #818181;
+}
+
+.post_alert {
+  width: 100%;
 }
