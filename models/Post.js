@@ -16,4 +16,41 @@ Post.show = async (data) => {
     })
 };
 
+Post.feed = async (id_user) => {
+    const queryString = `SELECT * FROM membership WHERE id_user = '${id_user}'`
+
+    return new Promise(function (resolve, reject) {
+        dbConnection.execute(queryString).then(async ([rows]) => {
+
+            if (rows.length > 0) {
+
+                const result = [];
+
+                for (var i = 0; i < rows.length; i++) {
+                    const queryPost = rows[i].id_creator
+                    const processedData = queryPost
+
+                    result.push(processedData);
+                }
+
+                const postString = `SELECT post.*,creators.pname FROM post JOIN creators ON creators.id = post.id_creator WHERE post.id_creator IN (${result})`
+
+                console.log(postString)
+
+                dbConnection.execute(postString).then(async ([rows]) => {
+                    resolve(rows);
+                }).catch(err => {
+                    if (err) throw err;
+                });
+
+            } else {
+                resolve(rows);
+            }
+
+        }).catch(err => {
+            if (err) throw err;
+        });
+    })
+};
+
 module.exports = Post;
