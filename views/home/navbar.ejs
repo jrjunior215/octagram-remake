@@ -49,7 +49,7 @@
   <div class="profile">
 
     <div class="profile_link">
-      <img src="/img/profile.png" alt="Profile">
+      <img src="<%= loggedIn.img %>" alt="Profile">
       <div class="profile_name">
         <% if (loggedIn) { %>
           <h1>
@@ -87,7 +87,7 @@
                 for (var count = 0; count < memberlist.length; count++) {
                     html += '<a href="/' + memberlist[count].pname + '">';
                     html += '<div class="creator_nav">';
-                    html += '<img src="/img/profile.png" alt="profile_creator">';
+                    html += '<img src="'+ memberlist[count].img + '" alt="profile_creator">';
                     html += '<span>' + memberlist[count].pname + '</span>';
                     html += ' </div>';
                     html += '</a>';

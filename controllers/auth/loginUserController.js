@@ -6,14 +6,15 @@ module.exports = async (req, res) => {
         if (result[0].role === "USER") {
             req.session.userId = result[0]
             res.redirect('/home');
-            const id_user = result[0].id
         } else if (result[0].role === "ADMIN") {
             req.session.userId = result[0]
             res.redirect('/');
     
         } else if (result[0].role === "CREATOR") {
-            req.session.userId = result[0]
-            res.redirect('/');
+            const id_user = result[0].id;
+            const Creator = await User.creator(id_user);
+            req.session.userId = Creator[0]
+            res.redirect('/creator/' + Creator[0].pname + '');
         } else {
             req.session.userId = result[0]
             res.redirect('/');

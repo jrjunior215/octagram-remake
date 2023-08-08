@@ -18,6 +18,9 @@ const membershipController = require('./controllers/views/home/membershipControl
 const settingController = require('./controllers/views/home/settingController');
 const messageController = require('./controllers/views/home/messageController');
 
+// Views Controller Creator Page
+const creatorController = require('./controllers/views/creator/creatorController');
+
 // Search Controller
 const searchAutoCreatorController = require('./controllers/search/searchAutoCreatorController');
 const creatorPageController = require('./controllers/search/creatorPageController')
@@ -84,7 +87,6 @@ app.use(express.json());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-
 //------------ GET ------------
 
 // INDEX PAGE
@@ -98,10 +100,13 @@ app.get('/logout', logoutUserController);
 // HOME PAGE
 app.get('/home', checkAuth, homeController);
 app.get('/search', checkAuth, searchController);
-
-// HOME SEARCH
 app.get('/setting', checkAuth, settingController);
 app.get('/message', checkAuth, messageController);
+
+// CREATOR PAGE
+app.get('/creator/:pname', creatorController);
+
+// HOME SEARCH
 app.get('/search/query', checkAuth, searchAutoCreatorController);
 app.get('/:pname', checkAuth, creatorPageController);
 app.get('/:pname/membership', checkAuth, membershipController);

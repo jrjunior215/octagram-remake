@@ -18,8 +18,6 @@
   src: url('../../fonts/montserrat/Montserrat-Bold.ttf');
 }
 
-/* INDEX PAGE */
-
 .container {
   background-color: #F6F7FA;
 }
@@ -38,236 +36,6 @@
   display: flex;
   justify-content: center;
   background-color: #F6F7FA;
-}
-
-.container_box {
-  width: 50%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.box_feed {
-  flex-direction: column;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 20px;
-  height: 500px;
-  width: 100%;
-  background-color: #fff;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-.box_feed img {
-  width: 230px;
-  height: 200px;
-  margin: 20px;
-}
-
-.box_feed .btn {
-  border-radius: 20px;
-  color: #fff;
-  font-family: Poppins-Regular;
-  font-size: 15px;
-  margin: 20px;
-  padding: 10px 30px 10px 30px;
-  width: auto;
-  height: auto;
-  background-color: rgb(98, 108, 228);
-  cursor: pointer;
-  border: 2px solid #6d6d6d;
-}
-
-.box_feed .btn:hover {
-  background-color: rgb(112, 112, 112);
-}
-
-/* SEARCH PAGE  */
-
-.container_search {
-  width: 50%;
-  height: 100vh;
-  position: relative;
-}
-
-.header_search h1 {
-  margin: 84px 0px 20px 0px;
-  font-family: Poppins-Medium;
-}
-
-.search_content {
-  display: none;
-}
-
-.search_content.show_content {
-  display: block;
-}
-
-.search_bar {
-  height: auto;
-  width: 100%;
-}
-
-.search_box {
-  height: 50px;
-  width: 100%;
-  position: relative;
-  display: flex;
-}
-
-.search_box input {
-  width: 100%;
-}
-
-.search_text {
-  font-family: Poppins-Medium;
-  font-size: 15px;
-  color: #666666;
-  height: 100%;
-  background: #e6e6e6;
-  border-radius: 10px;
-  padding: 0 15px 0 50px;
-  border: 1px;
-}
-
-.symbol_search {
-  font-size: 21px;
-  position: absolute;
-  top: 10px;
-  left: 15px;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  color: #666666;
-}
-
-.search_box button {
-  width: auto;
-  height: 100%;
-  border-radius: 10px;
-  color: #fff;
-  background-color: #22549F;
-  font-family: Poppins-Medium;
-  font-size: 15px;
-  border: 1px;
-  padding: 14px;
-  margin-left: 10px;
-  cursor: pointer;
-}
-
-.search_box button:hover {
-  background-color: #02265c;
-}
-
-.search_text:hover {
-  background: #c7c7c7;
-}
-
-/* Search Content */
-
-.search_content {
-  position: absolute;
-  left: 40px;
-  margin-top: 14px;
-  width: 84%;
-  height: auto;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-.profile_search {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.search_result {
-  position: relative;
-  margin: 3px;
-  height: 60px;
-  width: 95%;
-}
-
-.center_data {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.nodata {
-  font-size: 21px;
-}
-
-.search_result a {
-  margin: 0;
-  padding: 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  height: 60px;
-  width: 100%;
-  border: 0px;
-  background-color: #fff;
-  border-radius: 10px;
-}
-
-.search_result a:hover {
-  background-color: #dfdfdf;
-}
-
-.search_result img {
-  margin-left: 10px;
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-}
-
-.search_result span {
-  margin-left: 13px;
-}
-
-.creator_info {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-}
-
-.creator_name {
-  font-size: 17px;
-  font-weight: 700;
-}
-
-.creator_desc {
-  font-size: 13px;
-}
-
-/* Header Creator */
-
-.creator_header {
-  margin-top: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
-}
-
-/* Creator List */
-.creator_list {
-  margin-top: 20px;
-  width: 100%;
-  height: auto;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 /* Creator Page */
@@ -339,24 +107,28 @@
   font-size: 13px;
 }
 
-.membership {
+.post {
   position: absolute;
   right: 50px;
   top: 35px;
 }
 
-.btn_sub {
-  font-size: 12px;
+.btn_post {
+  font-size: 15px;
   padding: 13px;
-  background-color: #f01f1f;
+  background-color: #0b47a0;
   color: #fff;
-  border-radius: 40px;
+  border-radius: 10px;
   cursor: pointer;
   border: 1px #6d6d6d;
 }
 
-.btn_sub:hover {
-  background-color: #ee5959;
+.fas {
+  margin-right: 10px;
+}
+
+.btn_post:hover {
+  background-color: #1f4f77;
 }
 
 /* Creator Bar */
@@ -377,12 +149,12 @@
   align-items: center;
 }
 
-.navbar a{
+.navbar a {
   padding: 15px;
   font-size: 16px;
 }
 
-.navbar a:hover{
+.navbar a:hover {
   border-bottom: 1px solid #707070;
 }
 

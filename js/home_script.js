@@ -35,7 +35,7 @@ async function load_data(query = '') {
                     for (var count = 0; count < data.length; count++) {
                         html += '<li class="search_result">';
                         html += '<a href="/' + data[count].pname + '">';
-                        html += '<img src="/img/profile.png" alt="">';
+                        html += '<img src="' + data[count].img + '" alt="">';
                         html += '<div class="creator_info">';
                         html += '<span class="creator_name">' + data[count].pname + '</span>';
                         html += '<span class="creator_desc">Creating website octagram</span>';

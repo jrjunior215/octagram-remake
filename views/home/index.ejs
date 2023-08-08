@@ -10,7 +10,7 @@
         <% for(var i=0; i < posts.length; i++) { %>
           <div class="post_box">
               <div class="profile_post">
-                  <img src="/img/profile.png" alt="profile" class="profile_img_post">
+                  <img src="<%=posts[i].img%>" alt="profile" class="profile_img_post">
                   <div class="creator_post_name">
                       <span class="creator_name">
                           <%=posts[i].pname%>
