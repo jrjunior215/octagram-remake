@@ -1,0 +1,32 @@
+<div class="container_home">
+    <div class="container_page">
+        <div class="container_setting">
+            <div class="setting_box">
+                <div class="setting_profile">
+                    <div class="setting_grid">
+                        <span>Profile</span>
+                        <form action="/upload" method="POST" enctype="multipart/form-data">
+                            <div class="upload_pic">
+                                <form action="/upload" method="POST" enctype="multipart/form-data">
+                                    <img src="/img/profile.png" alt="profile">
+                                    <button class="btn_upload">Upload photo</button>
+                                </form>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="setting_grid">
+                        <span>Display name</span>
+                        <input type="text" name="email" value="<%= loggedIn.name %>">
+                    </div>
+                    <div class="setting_grid">
+                        <span>Email</span>
+                        <input type="text" name="email" value="<%= loggedIn.email %>">
+                    </div>
+                    <div class="setting_grid">
+                        <button class="btn_save">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

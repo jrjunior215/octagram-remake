@@ -2,6 +2,7 @@ const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const expressSession = require('express-session');
+const multer = require('multer');
 
 //------------ Controller ------------
 
@@ -13,7 +14,9 @@ const regController = require('./controllers/views/index/regController');
 // Views Controller Home Page
 const homeController = require('./controllers/views/home/homeController');
 const searchController = require('./controllers/views/home/searchController');
-const membershipController = require('./controllers/views/home/membershipController')
+const membershipController = require('./controllers/views/home/membershipController');
+const settingController = require('./controllers/views/home/settingController');
+const messageController = require('./controllers/views/home/messageController');
 
 // Search Controller
 const searchAutoCreatorController = require('./controllers/search/searchAutoCreatorController');
@@ -27,6 +30,7 @@ const logoutUserController = require('./controllers/auth/logoutUserController');
 // Member Controller
 const memberAddController = require('./controllers/creator/memberAddController');
 const memberListController = require('./controllers/creator/memberListController');
+
 
 //------------ Controller ------------
 
@@ -73,12 +77,13 @@ app.use("/lib", express.static('lib'));
 app.use("/js", express.static('js'));
 app.use("/fonts", express.static('fonts'));
 app.use("/icon", express.static('fonts/font-awesome-4.7.0/css/font-awesome.min.css'));
-app.use(express.urlencoded({extended:false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // SET VIEWS AND VIEW ENGINE
-app.set('views', path.join(__dirname,'views'));
-app.set('view engine','ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
 
 //------------ GET ------------
 
@@ -88,16 +93,21 @@ app.get('/', redirectAuth, indexController);
 // AUTH PAGE
 app.get('/login', redirectAuth, loginController);
 app.get('/register', redirectAuth, regController);
-app.get('/logout',  logoutUserController);
+app.get('/logout', logoutUserController);
 
 // HOME PAGE
 app.get('/home', checkAuth, homeController);
-app.get('/search', searchController);
+app.get('/search', checkAuth, searchController);
 
 // HOME SEARCH
-app.get('/:pname', creatorPageController);
-app.get('/:pname/membership', membershipController);
-app.get('/search/query', searchAutoCreatorController);
+app.get('/setting', checkAuth, settingController);
+app.get('/message', checkAuth, messageController);
+app.get('/search/query', checkAuth, searchAutoCreatorController);
+app.get('/:pname', checkAuth, creatorPageController);
+app.get('/:pname/membership', checkAuth, membershipController);
+
+// Navbar
+app.get('/s/navbar', memberListController)
 
 //------------ POST ------------
 
@@ -107,8 +117,6 @@ app.post('/user/login', loginUserController);
 
 // CREATOR MEMBERSHIP
 app.post('/membership/prefer', memberAddController)
-
-app.get('/s/navbar', memberListController)
 
 // SET POST LISTEN
 app.listen(4000, () => console.log("Server is Running on Port 4000."));

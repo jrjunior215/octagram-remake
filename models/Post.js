@@ -35,8 +35,6 @@ Post.feed = async (id_user) => {
 
                 const postString = `SELECT post.*,creators.pname FROM post JOIN creators ON creators.id = post.id_creator WHERE post.id_creator IN (${result})`
 
-                console.log(postString)
-
                 dbConnection.execute(postString).then(async ([rows]) => {
                     resolve(rows);
                 }).catch(err => {
