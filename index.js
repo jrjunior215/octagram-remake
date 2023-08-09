@@ -20,6 +20,9 @@ const messageController = require('./controllers/views/home/messageController');
 
 // Views Controller Creator Page
 const creatorController = require('./controllers/views/creator/creatorController');
+const postChooseController = require('./controllers/views/creator/postChooseController');
+const postTextController = require('./controllers/views/creator/postTextController');
+const postImageController = require('./controllers/views/creator/postImageController');
 
 // Search Controller
 const searchAutoCreatorController = require('./controllers/search/searchAutoCreatorController');
@@ -33,6 +36,12 @@ const logoutUserController = require('./controllers/auth/logoutUserController');
 // Member Controller
 const memberAddController = require('./controllers/creator/memberAddController');
 const memberListController = require('./controllers/creator/memberListController');
+
+// Post Create
+
+// TEXT
+const textPostController = require('./controllers/upload/post/textPostController');
+
 
 
 //------------ Controller ------------
@@ -76,6 +85,7 @@ app.set('view engine', 'ejs');
 // SET STATIC FILE
 app.use("/css", express.static('css'));
 app.use("/img", express.static('img'));
+app.use("/img/icon.png", express.static('img/icon.png'));
 app.use("/lib", express.static('lib'));
 app.use("/js", express.static('js'));
 app.use("/fonts", express.static('fonts'));
@@ -104,6 +114,9 @@ app.get('/setting', checkAuth, settingController);
 app.get('/message', checkAuth, messageController);
 
 // CREATOR PAGE
+app.get('/post/create', postChooseController);
+app.get('/post/text', postTextController);
+app.get('/post/image', postImageController);
 app.get('/creator/:pname', creatorController);
 
 // HOME SEARCH
@@ -122,6 +135,11 @@ app.post('/user/login', loginUserController);
 
 // CREATOR MEMBERSHIP
 app.post('/membership/prefer', memberAddController)
+
+// POST CREATE
+
+// TEXT POST
+app.post('/text/create', textPostController);
 
 // SET POST LISTEN
 app.listen(4000, () => console.log("Server is Running on Port 4000."));

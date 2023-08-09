@@ -1,13 +1,13 @@
 function ShowEllipsis() {
-    let ellipsis_popups = document.getElementById('ellipsis_popups');
-    ellipsis_popups.classList.toggle("open_menu");
+    let popup = document.getElementById('popup');
+    popup.classList.add("open_menu");
 }
 
 window.onclick = function (event) {
-    let ellipsis_popups = document.getElementById('ellipsis_popups');
+    let popup = document.getElementById('popup');
 
-    if (!event.target.matches('.drop_menu')) {
-        ellipsis_popups.classList.remove("open_menu");
+    if (!event.target.matches('.ellipsis')) {
+        popup.classList.remove("open_menu");
     }
 
 }

@@ -1,42 +1,48 @@
 <div class="container_home">
   <div class="container_page">
     <div class="container_box">
-      <div class="feed_header">
-        
-      </div>
-
-      <% if (posts.length > 0) { %>
-
-        <% for(var i=0; i < posts.length; i++) { %>
-          <div class="post_box">
-              <div class="profile_post">
+      <div class="container_post">
+        <div class="header_feed">
+          <h1>Feed</h1>
+        </div>
+        <div class="limiter_post">
+        <% if (posts.length> 0) { %>
+          <% for(var i=0; i < posts.length; i++) { %>
+              <div class="post_box">
+                <div class="profile_post">
                   <img src="<%=posts[i].img%>" alt="profile" class="profile_img_post">
                   <div class="creator_post_name">
-                      <span class="creator_name">
-                          <%=posts[i].pname%>
-                      </span>
-                      <span class="post_time">1 hr.</span>
+                    <span class="creator_name">
+                      <%=posts[i].pname%>
+                    </span>
+                    <span class="post_time">1 hr.</span>
                   </div>
-              </div>
-              <div class="post_content_limit">
+                </div>
+                <div class="post_content_limit">
                   <div class="post_content">
-                      <span class="post_title"><%=posts[i].title%></span>
-                      <span class="post_desc"><%=posts[i].desc%></span>
+                    <span class="post_title">
+                      <%=posts[i].title%>
+                    </span>
+                    <span class="post_desc">
+                      <%=posts[i].desc%>
+                    </span>
                   </div>
+                </div>
               </div>
+            <% } %>
           </div>
-          <% } %>
+      </div>
 
-        <%} else { %>
+      <%} else { %>
 
-          <div class="box_feed">
-            <img src="/img/find_creator.png" alt="find_creator">
-            <a>Support or follow creators to see posts in your feed.</a>
-            <a href="/search" class="btn">Find Creator</a>
-          </div>
-    
+        <div class="box_feed">
+          <img src="/img/find_creator.png" alt="find_creator">
+          <a>Support or follow creators to see posts in your feed.</a>
+          <a href="/search" class="btn">Find Creator</a>
+        </div>
 
-          <% } %>
+
+        <% } %>
 
     </div>
   </div>

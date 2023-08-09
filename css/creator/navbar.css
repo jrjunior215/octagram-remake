@@ -145,21 +145,44 @@ ul li a:hover {
   font-weight: 100;
 }
 
-.ellipsis {
+.left_ellipsis {
+  right: 20px;
   position: absolute;
-  right: 10px;
-  cursor: pointer;
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 
-.ellipsis a:hover {
-  background-color: #eee;
-  border-radius: 30px;
+.ellipsis{
+  position: relative;
+  width: 60px;
+  height: 40px;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.ellipsis .fas{
+  margin: 0;
+  top: 5px;
+  right: 2px;
+  width: 0;
+  height: 0;
+}
+
+.ellipsis:hover {
+  background-color: #e2e2e2;
+  border-radius: 20px;
+  
 }
 
 .popup {
   position: relative;
+  display: none;
+}
+
+.popup.open_menu {
+  display: block;
 }
 
 .ellipsis_popups {
@@ -168,23 +191,18 @@ ul li a:hover {
   width: 230px;
   position: absolute;
   right: 20px;
-  bottom: 65px;
+  bottom: 50px;
   background-color: #fff;
-  display: none;
 }
 
 .drop_menu {
   border: none;
 }
 
-.ellipsis_popups.open_menu {
-  display: block;
-}
-
 .ellipsis_popups li a {
   margin: 10px;
   font-size: 12px;
-}
+} 
 
 .btn_logout {
   color: #f57070;

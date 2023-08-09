@@ -5,7 +5,7 @@ const Post = {};
 
 Post.show = async (data) => {
     const query = data;
-    const queryString = `SELECT * FROM POST WHERE id_creator = '${query}'`
+    const queryString = `SELECT * FROM POST WHERE id_creator = '${query} ORDER BY id DESC'`
 
     return new Promise(function (resolve) {
         dbConnection.execute(queryString).then(async ([rows]) => {
@@ -17,7 +17,7 @@ Post.show = async (data) => {
 };
 
 Post.feed = async (id_user) => {
-    const queryString = `SELECT * FROM membership WHERE id_user = '${id_user}'`
+    const queryString = `SELECT * FROM membership WHERE id_user = '${id_user} ORDER BY id DESC'`
 
     return new Promise(function (resolve, reject) {
         dbConnection.execute(queryString).then(async ([rows]) => {
@@ -33,7 +33,7 @@ Post.feed = async (id_user) => {
                     result.push(processedData);
                 }
 
-                const postString = `SELECT post.*,creators.pname,creators.img FROM post JOIN creators ON creators.id = post.id_creator WHERE post.id_creator IN (${result})`
+                const postString = `SELECT post.*,creators.pname,creators.img FROM post JOIN creators ON creators.id = post.id_creator WHERE post.id_creator IN (${result}) ORDER BY id DESC`
 
                 dbConnection.execute(postString).then(async ([rows]) => {
                     resolve(rows);
@@ -62,6 +62,21 @@ Post.creator = async (id_creator) => {
             if (err) throw err;
         });
     })
+};
+
+Post.text = async (data) => {
+    const { id_creator, title, desc } = data;
+    const desca = '`desc`';
+    const queryString = `INSERT INTO post(id_creator, title, ${desca}) VALUES('${id_creator}', '${title}', '${desc}')`
+
+    return new Promise(function (resolve) {
+        dbConnection.execute(queryString).then(async ([rows]) => {
+            resolve(rows);
+        }).catch(err => {
+            if (err) throw err;
+        });
+    })
+
 };
 
 module.exports = Post;
