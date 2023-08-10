@@ -37,4 +37,20 @@ Creator.page = async (data) => {
     })
 };
 
+Creator.create = async (data) => {
+
+    const { id_user, pname, fname, lname, phone } = data; 
+
+    const query = data; 
+    const queryString = `INSERT INTO creators(id_user,pname,fname,lname,phone,status) VALUES('${id_user}','${pname}','${fname}','${lname}','${phone}','0')`
+    return new Promise(function (resolve, reject) {
+        dbConnection.execute(queryString).then(async ([rows]) => {
+            resolve(rows);
+        }).catch(err => {
+            if (err) throw err;
+        });
+    })
+
+};
+
 module.exports = Creator;

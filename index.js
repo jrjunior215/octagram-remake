@@ -17,6 +17,7 @@ const searchController = require('./controllers/views/home/searchController');
 const membershipController = require('./controllers/views/home/membershipController');
 const settingController = require('./controllers/views/home/settingController');
 const messageController = require('./controllers/views/home/messageController');
+const creatorRegController = require('./controllers/views/home/creatorRegController');
 
 // Views Controller Creator Page
 const creatorController = require('./controllers/views/creator/creatorController');
@@ -41,7 +42,7 @@ const memberListController = require('./controllers/creator/memberListController
 
 // TEXT
 const textPostController = require('./controllers/upload/post/textPostController');
-
+const creatorUserController = require('./controllers/creator/creatorUserController');
 
 
 //------------ Controller ------------
@@ -112,6 +113,7 @@ app.get('/home', checkAuth, homeController);
 app.get('/search', checkAuth, searchController);
 app.get('/setting', checkAuth, settingController);
 app.get('/message', checkAuth, messageController);
+app.get('/creator', creatorRegController);
 
 // CREATOR PAGE
 app.get('/post/create', postChooseController);
@@ -132,6 +134,9 @@ app.get('/s/navbar', memberListController)
 // LOGIN & REGISTER
 app.post('/user/register', regUserController);
 app.post('/user/login', loginUserController);
+
+// REGISTER CREATOR
+app.post('/user/creator', creatorUserController);
 
 // CREATOR MEMBERSHIP
 app.post('/membership/prefer', memberAddController)

@@ -503,3 +503,92 @@
   align-items: center;
   flex-direction: column;
 }
+
+.container_creator {
+  height: 100vh;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+.box-page {
+    width: 450px;
+    background-color: #fff;
+}
+
+.box-page h1 {
+    text-align: center;
+    font-family: Poppins-Medium;
+    font-size: 30px;
+}
+
+.box-page p {
+    text-align: center;
+    font-family: Poppins-Medium;
+    font-size: 15px;
+}
+
+.inputtext {
+    text-align: center;
+    font-family: Poppins-Medium;
+    font-size: 15px;
+    display: block;
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+}
+
+.topic-x {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 6px;
+}
+
+.txttop {
+    font-family: Poppins-Medium;
+    font-size: 15px;
+}
+
+.container-login100-form-btn {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: block;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 40px;
+}
+  
+.login100-form-btn {
+    font-family: Montserrat-Bold;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #fff;
+    text-transform: uppercase;
+  
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    background: #57b846;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 25px;
+  
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+  
+.login100-form-btn:hover {
+    background: #333333;
+}

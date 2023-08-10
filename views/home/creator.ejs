@@ -1,0 +1,66 @@
+<div class="container_home">
+    <div class="container_page">
+        <div class="container_creator">
+            <div class="box-page">
+                <form action="/user/creator" method="POST" class="">
+                    <h1>สมัครเป็นคริเอเตอร์</h1>
+                    <div>
+                        <p>ผู้สร้างเนื้อหาสามารถสร้างรายได้จากผู้สนับสนุนที่สนใจในเนื้อหาของพวกคุณ ผู้สนับสนุนจะสมัครเป็นสมาชิกรายเดือนกับคุณ</p>
+                    </div>
+
+                    <input type="hidden" name="id_user" value=<%=loggedIn.id %>>
+
+                    <div class="topic-x">
+                        <span class="txttop">
+                            ชื่อผู้สร้างเนื้อหา
+                        </span>
+                    </div>
+
+                    <div class="" data-validate="Valid page name is required">
+                        <input class="inputtext" type="text" name="pname">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="topic-x">
+                        <span class="txttop">
+                            ชื่อจริง
+                        </span>
+                    </div>
+
+                    <div class="" data-validate="Valid page name is required">
+                        <input class="inputtext" type="text" name="fname">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="topic-x">
+                        <span class="txttop">
+                            นามสกุล
+                        </span>
+                    </div>
+
+                    <div class="" data-validate="Valid page name is required">
+                        <input class="inputtext" type="text" name="lname">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="topic-x">
+                        <span class="txttop">
+                            เบอร์โทรศัพท์
+                        </span>
+                    </div>
+                    <div class="" data-validate="Valid page name is required">
+                        <input class="inputtext" type="text" name="phone">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            ยืนยัน
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
