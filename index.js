@@ -3,6 +3,7 @@ const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const expressSession = require('express-session');
 const multer = require('multer');
+const dbConnection = require('./js/database');
 
 //------------ Controller ------------
 
@@ -43,6 +44,7 @@ const memberListController = require('./controllers/creator/memberListController
 // TEXT
 const textPostController = require('./controllers/upload/post/textPostController');
 const creatorUserController = require('./controllers/creator/creatorUserController');
+const imagePostController = require('./controllers/upload/post/imagePostController');
 
 
 //------------ Controller ------------
@@ -98,6 +100,15 @@ app.use(express.json());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+const storage = multer.diskStorage({
+    destination: 'img/post',
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + '-' + file.originalname);
+    }
+  });
+  
+const upload = multer({ storage: storage });
+
 //------------ GET ------------
 
 // INDEX PAGE
@@ -145,6 +156,24 @@ app.post('/membership/prefer', memberAddController)
 
 // TEXT POST
 app.post('/text/create', textPostController);
+
+// IMAGE POST 
+app.post('/image/create', upload.single('image'), (req, res) => {
+    const imagePath = req.file.path;
+    const data = req.body;
+    const { id_creator, title, desc } = data;
+    const desca = '`desc`';
+    const queryString = `INSERT INTO post(id_creator, title, ${desca}, img) VALUES('${id_creator}', '${title}', '${desc}', '${imagePath}')`
+
+    console.log(queryString)
+
+    dbConnection.execute(queryString).then(async ([rows]) => {
+        res.redirect('/creator/' + loggedIn.pname + '')
+    }).catch(err => {
+        if (err) throw err;
+    });
+
+  });
 
 // SET POST LISTEN
 app.listen(4000, () => console.log("Server is Running on Port 4000."));

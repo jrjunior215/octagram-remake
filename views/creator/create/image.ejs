@@ -1,7 +1,24 @@
 <div class="container_home">
     <div class="container_page">
-        <form class="container_post_text" action="/post/create" method="POST">
-            
+        <form class="container_post_text" action="/image/create" method="POST" enctype="multipart/form-data">
+            <div class="header_post_text">
+                <div class="header_post_text_left">
+                    <h1>Create Image post</h1>
+                </div>
+                <div class="header_post_text_right">
+                    <a href="/post/create">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>back</span>
+                    </a>
+                    <button>Post</button>
+                </div>
+            </div>
+            <div class="post_img_box">
+                <input type="hidden" name="id_creator" value="<%= loggedIn.id_creator %>">
+                <input type="file" name="image">
+                <input class="post_text_title" type="text" name="title" id="title" placeholder="Add your title">
+                <textarea class="post_text_desc" type="text" name="desc" id="desc" placeholder="Add your desc"></textarea>
+            </div>
         </form>
     </div>
 </div>

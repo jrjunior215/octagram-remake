@@ -79,4 +79,19 @@ Post.text = async (data) => {
 
 };
 
+Post.image = async (filename, data) => {
+    const { id_creator, title, desc } = data;
+    const desca = '`desc`';
+    const queryString = `INSERT INTO post(id_creator, title, ${desca}, img) VALUES('${id_creator}', '${title}', '${desc}', '${filename}')`
+
+    return new Promise(function (resolve) {
+        dbConnection.execute(queryString).then(async ([rows]) => {
+            resolve(rows);
+        }).catch(err => {
+            if (err) throw err;
+        });
+    })
+
+};
+
 module.exports = Post;
