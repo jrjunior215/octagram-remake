@@ -33,8 +33,7 @@ Post.feed = async (id_user) => {
                     result.push(processedData);
                 }
 
-                const postString = `SELECT post.*,creators.pname,creators.img FROM post JOIN creators ON creators.id = post.id_creator WHERE post.id_creator IN (${result}) ORDER BY id DESC`
-
+                const postString = `SELECT post.*,creators.pname,creators.img,post.img AS img_post  FROM post JOIN creators ON creators.id = post.id_creator WHERE post.id_creator IN (${result}) ORDER BY id DESC`
                 dbConnection.execute(postString).then(async ([rows]) => {
                     resolve(rows);
                 }).catch(err => {
@@ -79,10 +78,10 @@ Post.text = async (data) => {
 
 };
 
-Post.image = async (filename, data) => {
+Post.image = async (data, imageUrl) => {
     const { id_creator, title, desc } = data;
     const desca = '`desc`';
-    const queryString = `INSERT INTO post(id_creator, title, ${desca}, img) VALUES('${id_creator}', '${title}', '${desc}', '${filename}')`
+    const queryString = `INSERT INTO post(id_creator, title, ${desca}, img) VALUES('${id_creator}', '${title}', '${desc}', '${imageUrl}')`
 
     return new Promise(function (resolve) {
         dbConnection.execute(queryString).then(async ([rows]) => {

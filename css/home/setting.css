@@ -22,7 +22,7 @@
 
 .container_setting {
     width: 40%;
-    height: auto;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,7 +49,6 @@
 }
 
 .btn_upload {
-    content: 'Upload';
     height: 40px;
     width: 120px;
     border: 1px;
@@ -103,3 +102,12 @@
     border: 1px solid #dfdfdf;
     width: 100%;
 }
+
+.setting {
+    width: auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  

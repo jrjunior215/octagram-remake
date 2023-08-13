@@ -64,12 +64,12 @@ const app = express();
 
 // COOKIE SESSION
 app.use(expressSession({
-    secret: "node secret"
+  secret: "node secret"
 }));
 
 app.use("*", (req, res, next) => {
-    loggedIn = req.session.userId
-    next()
+  loggedIn = req.session.userId
+  next()
 });
 
 // EXPRESS LAYOUTS
@@ -78,8 +78,8 @@ app.set('layout', './layouts/layout');
 
 //SET PAGE LAYOUT
 app.use((req, res, next) => {
-    res.locals.layout = 'layouts/layout';
-    next();
+  res.locals.layout = 'layouts/layout';
+  next();
 });
 
 // SET VIEW ENGINE
@@ -99,15 +99,6 @@ app.use(express.json());
 // SET VIEWS AND VIEW ENGINE
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-const storage = multer.diskStorage({
-    destination: 'img/post',
-    filename: function (req, file, cb) {
-      cb(null, Date.now() + '-' + file.originalname);
-    }
-  });
-  
-const upload = multer({ storage: storage });
 
 //------------ GET ------------
 
@@ -158,22 +149,17 @@ app.post('/membership/prefer', memberAddController)
 app.post('/text/create', textPostController);
 
 // IMAGE POST 
-app.post('/image/create', upload.single('image'), (req, res) => {
-    const imagePath = req.file.path;
-    const data = req.body;
-    const { id_creator, title, desc } = data;
-    const desca = '`desc`';
-    const queryString = `INSERT INTO post(id_creator, title, ${desca}, img) VALUES('${id_creator}', '${title}', '${desc}', '${imagePath}')`
 
-    console.log(queryString)
+const storage = multer.diskStorage({
+  destination: './img/post',
+  filename: (req, file, callback) => {
+    callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+  }
+});
 
-    dbConnection.execute(queryString).then(async ([rows]) => {
-        res.redirect('/creator/' + loggedIn.pname + '')
-    }).catch(err => {
-        if (err) throw err;
-    });
+const upload = multer({ storage });
 
-  });
+app.post('/image/create', upload.single('image'), imagePostController);
 
 // SET POST LISTEN
 app.listen(4000, () => console.log("Server is Running on Port 4000."));

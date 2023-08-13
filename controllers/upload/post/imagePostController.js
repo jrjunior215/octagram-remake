@@ -1,9 +1,11 @@
 const Post = require('../../../models/Post')
 
 module.exports = async (req, res) => {
-  const imagePath = req.file;
   const data = req.body;
-  await Post.image(filename, data);
+  const image = req.file.filename;
+  const imageUrl = `/img/post/${image}`;
+
+  await Post.image(data, imageUrl);
   
   res.redirect('/creator/' + loggedIn.pname + '')
-}
+};
