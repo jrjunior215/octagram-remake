@@ -7,8 +7,17 @@
                         <div class="setting_grid">
                             <span>Profile</span>
                             <div class="upload_pic">
-                                <img src="<%= loggedIn.img %>" alt="profile">
+                                 <div class="old_img">
+                                    <img src="<%= loggedIn.img %>" alt="profile" id="oldImage">
+                                </div>
+                                <div class="new_img">
+                                    <img id="uploadedImage" src="#" alt="profile">
+                                </div>
+                                <!-- <input type="file" id="imageInput" accept="image/*" hidden />
+                                <label class= "btn_upload" for="imageInput">Upload photo</label> -->
                                 <!-- <button class="btn_upload">Upload photo</button> -->
+                                <input type="file" id="imageInput" accept="image/*" hidden>
+                                <label class= "btn_upload" for="imageInput">Upload photo</label>
                             </div>
                         </div>
                         <div class="setting_grid">
@@ -28,3 +37,24 @@
         </div>
     </div>
 </div>
+
+<script>
+    const imageInput = document.getElementById('imageInput');
+    const uploadedImage = document.getElementById('uploadedImage');
+    const new_img = document.querySelector('.new_img');
+    const old_img = document.querySelector('.old_img');
+
+    imageInput.addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                uploadedImage.src = e.target.result;
+                new_img.style.display = 'block';
+                old_img.style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+</script>
