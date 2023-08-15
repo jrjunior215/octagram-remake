@@ -67,4 +67,47 @@ User.creator = async (id_user) => {
 
 };
 
+User.profile = async (data, imageUrl) => {
+    const { id_user, name, email } = data;
+    const queryString = `UPDATE users SET name = '${name}', email = '${email}',img = '${imageUrl}' WHERE id = ${id_user}`
+
+    return new Promise(function (resolve) {
+        dbConnection.execute(queryString).then(async ([rows]) => {
+            resolve(rows);
+        }).catch(err => {
+            if (err) throw err;
+        });
+    })
+
+};
+
+User.profiletext = async (data, imageUrl) => {
+    const { id_user, name, email, img} = data;
+    const queryString = `UPDATE users SET name = '${name}', email = '${email}',img = '${img}' WHERE id = ${id_user}`
+
+    return new Promise(function (resolve) {
+        dbConnection.execute(queryString).then(async ([rows]) => {
+            resolve(rows);
+        }).catch(err => {
+            if (err) throw err;
+        });
+    })
+
+};
+
+User.relogin = async (id_user) => {
+    const queryString = `SELECT * FROM users WHERE id = '${id_user}'`
+
+    return new Promise(function (resolve) {
+        dbConnection.execute(queryString).then(async ([rows]) => {
+            resolve(rows)
+        }).catch(err => {
+            if (err) throw err;
+        });
+    })
+
+};
+
+
+
 module.exports = User;

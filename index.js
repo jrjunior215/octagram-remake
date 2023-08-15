@@ -46,6 +46,9 @@ const textPostController = require('./controllers/upload/post/textPostController
 const creatorUserController = require('./controllers/creator/creatorUserController');
 const imagePostController = require('./controllers/upload/post/imagePostController');
 
+//PROFILE
+const ProfileUpdateController = require('./controllers/user/ProfileUpdateController');
+
 
 //------------ Controller ------------
 
@@ -155,11 +158,16 @@ const storage = multer.diskStorage({
   filename: (req, file, callback) => {
     callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
   }
+  
 });
 
 const upload = multer({ storage });
 
 app.post('/image/create', upload.single('image'), imagePostController);
+
+// PROFILE
+
+app.post('/profile/update', ProfileUpdateController);
 
 // SET POST LISTEN
 app.listen(4000, () => console.log("Server is Running on Port 4000."));

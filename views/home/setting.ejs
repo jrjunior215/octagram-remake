@@ -3,7 +3,7 @@
         <div class="container_setting">
             <div class="setting">
                 <div class="setting_box">
-                    <div class="setting_profile">
+                    <form action="/profile/update" method="POST" enctype="multipart/form-data" class="setting_profile">
                         <div class="setting_grid">
                             <span>Profile</span>
                             <div class="upload_pic">
@@ -13,25 +13,24 @@
                                 <div class="new_img">
                                     <img id="uploadedImage" src="#" alt="profile">
                                 </div>
-                                <!-- <input type="file" id="imageInput" accept="image/*" hidden />
-                                <label class= "btn_upload" for="imageInput">Upload photo</label> -->
-                                <!-- <button class="btn_upload">Upload photo</button> -->
-                                <input type="file" id="imageInput" accept="image/*" hidden>
-                                <label class= "btn_upload" for="imageInput">Upload photo</label>
+                                <input type="file" name="image" id="imageInput" hidden>
+                                <label class="btn_upload" for="imageInput">Upload photo</label>
                             </div>
                         </div>
                         <div class="setting_grid">
+                            <input type="hidden" name="id_user" value="<%= loggedIn.id %>">
                             <span>Display name</span>
-                            <input type="text" name="email" value="<%= loggedIn.name %>">
+                            <input type="text" name="name" value="<%= loggedIn.name %>">
                         </div>
                         <div class="setting_grid">
                             <span>Email</span>
                             <input type="text" name="email" value="<%= loggedIn.email %>">
                         </div>
+                        <input type="hidden" name="img" value="<%= loggedIn.img %>">
                         <div class="setting_grid">
                             <button class="btn_save">Save</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
