@@ -25,10 +25,13 @@ const creatorController = require('./controllers/views/creator/creatorController
 const postChooseController = require('./controllers/views/creator/postChooseController');
 const postTextController = require('./controllers/views/creator/postTextController');
 const postImageController = require('./controllers/views/creator/postImageController');
+const packageController = require('./controllers/views/creator/packageController');
+const packagePageController = require('./controllers/package/packagePageController');
+const packageCreateController = require('./controllers/package/packageCreateController');
 
 // Search Controller
 const searchAutoCreatorController = require('./controllers/search/searchAutoCreatorController');
-const creatorPageController = require('./controllers/search/creatorPageController')
+const creatorPageController = require('./controllers/search/creatorPageController');
 
 // Auth Controller
 const regUserController = require('./controllers/auth/regUserController');
@@ -124,7 +127,9 @@ app.get('/creator', creatorRegController);
 app.get('/post/create', postChooseController);
 app.get('/post/text', postTextController);
 app.get('/post/image', postImageController);
-app.get('/creator/:pname', creatorController);
+app.get('/package/create', packagePageController);
+app.get('/:pname/home', creatorController);
+app.get('/:pname/package', packageController);
 
 // HOME SEARCH
 app.get('/search/query', checkAuth, searchAutoCreatorController);
@@ -166,8 +171,10 @@ const upload = multer({ storage });
 app.post('/image/create', upload.single('image'), imagePostController);
 
 // PROFILE
-
 app.post('/profile/update', ProfileUpdateController);
+
+// PACKAGE CREATE
+app.post('/package/create', packageCreateController);
 
 // SET POST LISTEN
 app.listen(4000, () => console.log("Server is Running on Port 4000."));

@@ -7,14 +7,40 @@
   <div class="container_navbar">
     <ul>
       <li>
-        <a href="/creator/<%= loggedIn.pname %>">
+        <a href="/<%= loggedIn.pname %>/home">
           <i class="fas fa-house"></i>
           <span class="nav-item">My page</span>
         </a>
       </li>
+      <li>
+        <a href="/<%= loggedIn.pname %>/members">
+          <i class="fas fa-users"></i>
+          <span class="nav-item">Membership</span>
+        </a>
+      </li>
+      <li>
+        <a href="/<%= loggedIn.pname %>/package">
+          <i class="fas fa-cubes"></i>
+          <span class="nav-item">Plans</span>
+        </a>
+      </li>
+      <li>
+        <a href="/<%= loggedIn.pname %>/message">
+          <i class="fas fa-envelope"></i>
+          <span class="nav-item">Message</span>
+        </a>
+      </li>
+      <li>
+        <a href="/<%= loggedIn.pname %>/setting">
+          <i class="fas fa-gear"></i>
+          <span class="nav-item">Setting</span>
+        </a>
+      </li>
     </ul>
 
-    <div class="underline"></div>
+    <div class="post_navbar">
+      <a href="/post/create" class="btn_post_navbar"><i class="fa-solid fa-pen-to-square fa-lg fav"></i>Create</a>
+    </div>
 
     <div class="profile">
       <div class="profile_link">

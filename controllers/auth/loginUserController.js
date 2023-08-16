@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
             const id_user = result[0].id;
             const Creator = await User.creator(id_user);
             req.session.userId = Creator[0]
-            res.redirect('/creator/' + Creator[0].pname + '');
+            res.redirect('/'+ Creator[0].pname +'/home');
         } else {
             req.session.userId = result[0]
             res.redirect('/');

@@ -1,0 +1,109 @@
+.conatainer_package{
+    width: 60%;
+    height: auto;
+}
+
+.title_package {
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.package_box {
+    width: 100%;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.package_button {
+    width: 100%;
+    height: 70px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.package_button a{
+    font-size: 13px;
+    margin-right: 10px;
+    padding: 10px;
+    color: #302d2d;
+    border-radius: 10px;
+    border: 1px solid #8a8484;
+}
+
+.package_button a:hover{
+    color: #525050;
+    background-color: #e7e5e5;
+}
+
+.container_package {
+    width: 50%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.header_package {
+    display: flex;
+    position: relative;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+.header_package_left {
+    position: absolute;
+    left: 0;
+}
+
+.header_package_right {
+    position: absolute;
+    right: 0;
+}
+
+.header_package_right button {
+    margin-left: 10px;
+    border: 1px;
+    padding: 10px 30px 10px 30px;
+    font-size: 15px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #22549F;
+    cursor: pointer;
+}
+
+.header_package_right button:hover {
+    background-color: #183F7B;
+}
+
+.package_text_box {
+    margin-top: 60px;
+    width: 100%;
+    height: 600px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 20px;
+}
+
+.package_text_title{
+    font-size: 20px;
+    width: 100%;
+    border: 1px;
+    outline: none;
+    padding: 10px;
+}
+
+.package_text_desc{
+    font-size: 15px;
+    width: 100%;
+    border: 1px;
+    outline: none;
+    padding: 10px;
+    height: 70%;
+}

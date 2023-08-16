@@ -269,3 +269,31 @@ ul li a:hover {
   position: absolute;
   margin-left: 50px;
 }
+
+.post_navbar {
+  margin-top: 20px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.btn_post_navbar {
+  font-size: 14px;
+  width: 80%;
+  padding: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  color: rgb(85, 83, 83);
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid rgb(185, 183, 183);
+}
+
+.fav {
+  margin-right: 10px;
+}
