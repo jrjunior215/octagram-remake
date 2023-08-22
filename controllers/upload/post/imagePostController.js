@@ -7,5 +7,5 @@ module.exports = async (req, res) => {
 
   await Post.image(data, imageUrl);
   
-  res.redirect('/creator/' + loggedIn.pname + '')
+  res.redirect('/' + loggedIn.pname + '/home')
 };

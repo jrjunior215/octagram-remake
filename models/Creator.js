@@ -54,4 +54,17 @@ Creator.create = async (data) => {
 
 };
 
+Creator.fineid = async (id_creator) => {
+
+    const queryString = `SELECT * FROM creators WHERE id = '${id_creator}'`
+    return new Promise(function (resolve, reject) {
+        dbConnection.execute(queryString).then(async ([rows]) => {
+            resolve(rows);
+        }).catch(err => {
+            if (err) throw err;
+        });
+    })
+
+};
+
 module.exports = Creator;

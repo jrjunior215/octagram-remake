@@ -1,0 +1,46 @@
+<div class="container_home">
+    <div class="container_page">
+        <div class="container_checkout">
+            <div class="checkout_payment">
+                <h1>Payment</h1>
+                <form action="/create-payment" method="POST">
+                    <input type="hidden" name="id_user" value="<%=loggedIn.id%>">
+                    <input type="hidden" name="id_creator" value="<%=creators[0].id%>">
+                    <input type="hidden" name="id_package" value="<%=packages[0].id%>">
+                    <input type="hidden" name="package_price" value="<%=packages[0].price%>">
+                    <button><i class="fa-brands fa-paypal paypal_btn"></i>PayPal</button>
+                </form>
+            </div>
+            <div class="checkout_deatail">
+                <h1>Deatails</h1>
+                <div class="checkout_creator">
+                    <img src="<%=creators[0].img%>" alt="">
+                    <div class="craetors_name">
+                        <span class="creator_name">
+                            <%=creators[0].pname%>
+                        </span>
+                        <span>Package name : <%=packages[0].title%></span>
+                    </div>
+                </div>
+                <hr>
+                <div class="checkout_price">
+                    <div class="package_price">
+                        <span>Monthly payment</span>
+                        <span><%=packages[0].price%> baht</span>
+                    </div>
+                    <div class="package_price">
+                        <span>Vat</span>
+                        <span>30 baht</span>
+                    </div>
+                </div>
+                <hr>
+                <div class="checkout_price">
+                    <div class="package_price">
+                        <span>Total due</span>
+                        <span><%= packages[0].price + 30%> baht</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+.container_checkout {
+    width: 70%;
+    height: 100vh;
+    display: flex;
+}
+
+.checkout_payment {
+    width: 50%;
+    height: 100vh;
+    background-color: #fff;
+    border-right: 1px solid #e9e5e5;
+    padding: 20px;
+}
+
+.checkout_deatail {
+    width: 50%;
+    height: auto;
+    padding: 20px;
+}
+
+.checkout_payment button {
+    width: 100%;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.paypal_btn {
+    font-size: 25px;
+    margin-right: 10px;
+}
+
+.checkout_creator {
+    display: flex;
+    margin-top: 20px;
+}
+
+.checkout_creator img{
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.creator_name {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout_deatail hr {
+    margin: 10px;
+}
+
+.package_price {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}

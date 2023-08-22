@@ -8,7 +8,18 @@
                 <a href="/package/create">Create</a>
             </div>
             <div class="package_box">
-
+                <% for(var i=0; i < package.length; i++) { %>
+                <div class="package_item">
+                    <div class="package_name">
+                        <span>Package name</span>
+                        <h1><%=package[i].title%></h1>
+                    </div>
+                    <div class="package_price">
+                        <span>Price</span>
+                        <h1><%=package[i].price%> Baht</h1>
+                    </div>
+                </div>
+                <% } %>
             </div>
         </div>
     </div>

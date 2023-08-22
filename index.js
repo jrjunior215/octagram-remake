@@ -4,6 +4,7 @@ const path = require('path');
 const expressSession = require('express-session');
 const multer = require('multer');
 const dbConnection = require('./js/database');
+const paypal = require('paypal-rest-sdk');
 
 //------------ Controller ------------
 
@@ -52,6 +53,10 @@ const imagePostController = require('./controllers/upload/post/imagePostControll
 //PROFILE
 const ProfileUpdateController = require('./controllers/user/ProfileUpdateController');
 
+const checkoutCreatorController = require('./controllers/checkout/checkoutCreatorController');
+
+const paypalController = require('./controllers/checkout/paypalController');
+
 
 //------------ Controller ------------
 
@@ -87,6 +92,12 @@ app.use((req, res, next) => {
   res.locals.layout = 'layouts/layout';
   next();
 });
+
+paypal.configure({
+  'mode': 'sandbox',
+  'client_id': 'AVJ6mtFBreT1lVa-vxp-XDi6j-5EyLLNzywpRJ3ECLCVChiNbytq5OewOfHMX3a1W4xOraTdyYF5scPr',
+  'client_secret': 'EHj6li2g7QMf2RHr3SZ-Q8RrE4kE6xbdNGlcwX4nQwBGR_Zd7JYY1-b0clpdMrkVVuvFxo69obB9Pi5n'
+})
 
 // SET VIEW ENGINE
 app.set('view engine', 'ejs');
@@ -175,6 +186,11 @@ app.post('/profile/update', ProfileUpdateController);
 
 // PACKAGE CREATE
 app.post('/package/create', packageCreateController);
+
+// Checkout Package
+app.post('/checkout/:pname/:package_id', checkoutCreatorController);
+
+app.post('/create-payment', paypalController);
 
 // SET POST LISTEN
 app.listen(4000, () => console.log("Server is Running on Port 4000."));

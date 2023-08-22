@@ -107,3 +107,27 @@
     padding: 10px;
     height: 70%;
 }
+
+.package_item {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+    cursor: pointer;
+    padding: 20px;
+}
+
+.package_item:hover {
+    background-color: #eee;
+}
+
+.package_item span{
+    color: #918d8d;
+}
+
+.package_price {
+    margin-left: 60px;
+}
