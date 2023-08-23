@@ -192,5 +192,23 @@ app.post('/checkout/:pname/:package_id', checkoutCreatorController);
 
 app.post('/create-payment', paypalController);
 
+app.get('/success', (req, res) => {
+  const paymentId = req.query.paymentId;
+  const payerId = req.query.PayerID;
+
+  const executePaymentJson = {
+    payer_id: payerId,
+  };
+  
+  paypal.payment.execute(paymentId, executePaymentJson, (error, payment) => {
+    if (error) {
+      res.status(500).json({ error });
+    } else {
+      res.redirect('/home');
+      res.json(payment);
+    }
+  });
+});
+
 // SET POST LISTEN
 app.listen(4000, () => console.log("Server is Running on Port 4000."));
