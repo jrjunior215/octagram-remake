@@ -1,45 +1,64 @@
 const paypal = require('paypal-rest-sdk');
+const Member = require('../../models/Member')
 
 paypal.configure({
-    'mode': 'sandbox',
-    'client_id': 'AVJ6mtFBreT1lVa-vxp-XDi6j-5EyLLNzywpRJ3ECLCVChiNbytq5OewOfHMX3a1W4xOraTdyYF5scPr',
-    'client_secret': 'EHj6li2g7QMf2RHr3SZ-Q8RrE4kE6xbdNGlcwX4nQwBGR_Zd7JYY1-b0clpdMrkVVuvFxo69obB9Pi5n'
-  })
-  
+  'mode': 'sandbox',
+  'client_id': 'AaYqnuLBvj1k_-E1zW4jJPNKOPT9qa4GD-i8unxXx9HtRGUIQVo9QTgyu0Kb9XQp1JwAqmBUtMmt_HuG',
+  'client_secret': 'EBOYNOX3wS1F_uflOaeae93iqsGgoruucM9-ygilyPjmqhwWFKJu7VtOil23WRFLhcFImXrZ9B643tL-'
+})
 
 module.exports = async (req, res) => {
 
-    const data = req.body
-    const price = req.body.package_price
-    
-    const payment = {
-        intent: 'sale',
-        payer: {
-          payment_method: 'paypal',
+  const data = req.body
+  const price = req.body.package_price
+
+  try {
+
+    const create_payment_json = {
+      "intent": "sale",
+      "payer": {
+        "payment_method": "paypal"
+      },
+      "redirect_urls": {
+        "return_url": "http://localhost:4000/success",
+        "cancel_url": "http://localhost:4000/cancel"
+      },
+      "transactions": [{
+        "item_list": {
+          "items": [{
+            "name": "Book",
+            "sku": "001",
+            "price": "25.00",
+            "currency": "USD",
+            "quantity": 1
+          }]
         },
-        redirect_urls: {
-          return_url: 'http://localhost:4000/success',
-          cancel_url: 'http://localhost:4000/cancel',
+        "amount": {
+          "currency": "USD",
+          "total": "25.00"
         },
-        transactions: [{
-          amount: {
-            total: price,
-            currency: 'USD',
-          },
-          description: 'Sample Payment',
-        }],
-      };
-    
-      paypal.payment.create(payment, (error, payment) => {
-        if (error) {
-          console.error(error);
-        } else {
-          // Redirect the user to the PayPal approval URL
-          for (let link of payment.links) {
-            if (link.rel === 'approval_url') {
-              res.redirect(link.href);
-            }
+        "description": "Hat for the best team ever"
+      }]
+    };
+
+    paypal.payment.create(create_payment_json, function (error, payment) {
+      if (error) {
+        throw error;
+      } else {
+        for (let i = 0; i < payment.links.length; i++) {
+          if (payment.links[i].rel === 'approval_url') {
+            const approvalUrl = payment.links.find(link => link.rel === 'approval_url').href;
+            const successRedirectUrl = `${approvalUrl}&itemPrice=${price}`;
+            Member.add(data);
+            res.redirect(successRedirectUrl);
+            // res.redirect(payment.links[i].href);
           }
         }
-      });
+      }
+    });
+
+  } catch (error) {
+    console.log(error.message);
+  }
+
 }

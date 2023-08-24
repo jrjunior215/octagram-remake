@@ -3,9 +3,10 @@
         <div class="container_checkout">
             <div class="checkout_payment">
                 <h1>Payment</h1>
-                <form action="/create-payment" method="POST">
+                <form action="/pay" method="POST">
                     <input type="hidden" name="id_user" value="<%=loggedIn.id%>">
                     <input type="hidden" name="id_creator" value="<%=creators[0].id%>">
+                    <input type="hidden" name="pname" value="<%=creators[0].pname%>">
                     <input type="hidden" name="id_package" value="<%=packages[0].id%>">
                     <input type="hidden" name="package_price" value="<%=packages[0].price%>">
                     <button><i class="fa-brands fa-paypal paypal_btn"></i>PayPal</button>

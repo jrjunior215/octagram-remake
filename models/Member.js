@@ -6,6 +6,7 @@ const Member = {};
 Member.add = async (data) => {
     const { pname, id_creator, id_user} = data
     const queryString = `INSERT membership(id_creator,id_user) VALUES(${id_creator},${id_user})`
+    console.log(queryString)
     return new Promise(function (resolve, reject) {
         dbConnection.execute(queryString).then(async ([rows]) => {
             resolve(rows);

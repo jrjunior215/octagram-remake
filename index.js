@@ -95,8 +95,8 @@ app.use((req, res, next) => {
 
 paypal.configure({
   'mode': 'sandbox',
-  'client_id': 'AVJ6mtFBreT1lVa-vxp-XDi6j-5EyLLNzywpRJ3ECLCVChiNbytq5OewOfHMX3a1W4xOraTdyYF5scPr',
-  'client_secret': 'EHj6li2g7QMf2RHr3SZ-Q8RrE4kE6xbdNGlcwX4nQwBGR_Zd7JYY1-b0clpdMrkVVuvFxo69obB9Pi5n'
+  'client_id': 'AaYqnuLBvj1k_-E1zW4jJPNKOPT9qa4GD-i8unxXx9HtRGUIQVo9QTgyu0Kb9XQp1JwAqmBUtMmt_HuG',
+  'client_secret': 'EBOYNOX3wS1F_uflOaeae93iqsGgoruucM9-ygilyPjmqhwWFKJu7VtOil23WRFLhcFImXrZ9B643tL-'
 })
 
 // SET VIEW ENGINE
@@ -133,6 +133,54 @@ app.get('/search', checkAuth, searchController);
 app.get('/setting', checkAuth, settingController);
 app.get('/message', checkAuth, messageController);
 app.get('/creator', creatorRegController);
+
+app.get('/success', async (req, res) => {
+
+  try {
+
+    const payerId = req.query.PayerID;
+    const paymentId = req.query.paymentId;
+    const price = req.query.itemPrice;
+    console.log(price)
+
+    const execute_payment_json = {
+      "payer_id": payerId,
+      "transactions": [{
+        "amount": {
+          "currency": "USD",
+          "total": "25.00"
+        }
+      }]
+    };
+
+    paypal.payment.execute(paymentId, execute_payment_json, function (error, payment) {
+      if (error) {
+        console.log(error.response);
+        throw error;
+      } else {
+        res.locals.layout = 'payment/layout';
+        res.render('payment/success');
+      }
+    });
+
+  } catch (error) {
+    console.log(error.message);
+  }
+
+});
+
+app.get('/cancel', async (req, res) => {
+
+  try {
+
+    res.locals.layout = 'payment/layout';
+    res.render('payment/cancel');
+
+  } catch (error) {
+    console.log(error.message);
+  }
+
+});
 
 // CREATOR PAGE
 app.get('/post/create', postChooseController);
@@ -174,7 +222,7 @@ const storage = multer.diskStorage({
   filename: (req, file, callback) => {
     callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
   }
-  
+
 });
 
 const upload = multer({ storage });
@@ -190,25 +238,7 @@ app.post('/package/create', packageCreateController);
 // Checkout Package
 app.post('/checkout/:pname/:package_id', checkoutCreatorController);
 
-app.post('/create-payment', paypalController);
-
-app.get('/success', (req, res) => {
-  const paymentId = req.query.paymentId;
-  const payerId = req.query.PayerID;
-
-  const executePaymentJson = {
-    payer_id: payerId,
-  };
-  
-  paypal.payment.execute(paymentId, executePaymentJson, (error, payment) => {
-    if (error) {
-      res.status(500).json({ error });
-    } else {
-      res.redirect('/home');
-      res.json(payment);
-    }
-  });
-});
+app.post('/pay', paypalController);
 
 // SET POST LISTEN
 app.listen(4000, () => console.log("Server is Running on Port 4000."));

@@ -15,5 +15,6 @@ module.exports = async (req, res) => {
   const check = await Member.check(id_creator, id_user);
 
   res.locals.layout = 'home/layout';
+  // res.render('home/creator/user');
   res.render('home/creator/user', { creators: creator_data, posts: post_data, checks: check, packages: package_data });
 }
